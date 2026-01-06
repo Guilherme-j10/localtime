@@ -1,0 +1,30 @@
+services:
+  windows-10:
+    image: dockurr/windows
+    container_name: windows
+    environment:
+      VERSION: "10"
+      USERNAME: guilherme
+      PASSWORD: 1234 
+      RAM_SIZE: "4G"
+      LANGUAGE: "pt-br"
+      TZ: America/Sao_Paulo
+    devices:
+      # sudo modprobe kvm_amd
+      # sudo chmod 666 /dev/kvm
+      - /dev/kvm
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8006:8006
+      - 3389:3389/tcp
+      - 3389:3389/udp
+    stop_grace_period: 2m
+    volumes:
+      - docker-windows_windows-10:/storage
+      - ./shared:/shared
+
+volumes:
+  docker-windows_windows-10:
+    external: true
