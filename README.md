@@ -122,10 +122,10 @@ bun run src/index.ts
 
 ### Compilar para executável
 
-Para gerar um executável standalone:
+Para gerar um executável standalone para Windows:
 
 ```bash
-bun build src/index.ts --compile --outfile localtime
+bun build src/index.ts --compile --target=bun-windows-x64 --outfile localtime
 ```
 
 O executável gerado pode ser encontrado na pasta `shared/` para uso em containers Windows.
@@ -275,8 +275,8 @@ bun run src/index.ts
 # Verificar tipos TypeScript
 bun run tsc --noEmit
 
-# Compilar para executável
-bun build src/index.ts --compile --outfile shared/localtime
+# Compilar para executável Windows
+bun build src/index.ts --compile --target=bun-windows-x64 --outfile shared/localtime
 ```
 
 ---
